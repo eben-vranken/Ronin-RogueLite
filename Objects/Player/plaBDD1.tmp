@@ -1,0 +1,96 @@
+[gd_scene load_steps=16 format=3 uid="uid://b7ro3yiv2rbqe"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_a0t2y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nn87m"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sq5oj"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="Curve" id="Curve_bmpi8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sy44o"]
+curve = SubResource("Curve_bmpi8")
+
+[sub_resource type="Curve" id="Curve_exa1p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s0v5t"]
+curve = SubResource("Curve_exa1p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cyotl"]
+emission_shape = 2
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_s0v5t")
+alpha_curve = SubResource("CurveTexture_sy44o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntqy0"]
+emission_enabled = true
+grow_amount = 4.611
+
+[sub_resource type="BoxMesh" id="BoxMesh_2edw6"]
+material = SubResource("StandardMaterial3D_ntqy0")
+
+[sub_resource type="Curve" id="Curve_bdcud"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5fdx0"]
+curve = SubResource("Curve_bdcud")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l66mb"]
+emission_shape_scale = Vector3(1, 1, 0.6)
+emission_shape = 3
+emission_box_extents = Vector3(0, 0, 1)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_5fdx0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7jdd"]
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ykhv8"]
+material = SubResource("StandardMaterial3D_t7jdd")
+size = Vector3(0.5, 0.1, 0.5)
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_a0t2y")
+walk_speed = null
+sprint_speed = null
+focus_speed = null
+acceleration = null
+max_speed = null
+dash_force = null
+dash_length = null
+dash_cooldown = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nn87m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_sq5oj")
+
+[node name="DashParticle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0)
+cast_shadow = 0
+emitting = false
+amount = 100
+explosiveness = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_cyotl")
+draw_pass_1 = SubResource("BoxMesh_2edw6")
+
+[node name="SprintParticle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, -0.9, 0)
+emitting = false
+amount = 15
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_l66mb")
+draw_pass_1 = SubResource("BoxMesh_ykhv8")

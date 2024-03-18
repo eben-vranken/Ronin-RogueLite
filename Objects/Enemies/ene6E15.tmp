@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cme7vorj7q7cm"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_ai.gd" id="1_ia8qa"]
+
+[node name="EnemyAI" type="NavigationAgent3D"]
+script = ExtResource("1_ia8qa")

@@ -1,0 +1,15 @@
+res://Terrain/debug_scene.res
+res://Terrain/TextureList.tres
+res://Scenes/debug_scene.tscn
+res://Objects/Enemies/enemy.gd
+res://Shaders/pixel_art_shader.gdshader
+res://Objects/Environment/Grass.mesh
+res://Objects/Environment/Flower.tres
+res://Objects/Environment/Rock.tres
+res://Objects/Environment/toolshed.tres
+res://Objects/Environment/greenhouse.tres
+res://Shaders/grass_wind.gdshader
+res://Objects/General/targetdummy.tscn
+res://Objects/Enemies/enemy.tscn
+res://Objects/Player/player.tscn
+res://Objects/Lighting/stone_toro.tscn

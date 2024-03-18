@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://sq5b36yopcn"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyi004xl7bg1m" path="res://Objects/Environment/Grass.mesh" id="1_bw1uw"]
+[ext_resource type="Shader" path="res://Shaders/grass_wind.gdshader" id="1_g5ayx"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a1bok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6olh"]
+render_priority = 0
+shader = ExtResource("1_g5ayx")
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_a1bok")
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.748956, 0, -0.66262, 0, 1, 0, 0.66262, 0, -0.748956, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_d6olh")
+mesh = ExtResource("1_bw1uw")
+skeleton = NodePath("")

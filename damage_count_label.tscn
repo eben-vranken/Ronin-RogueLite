@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf8j12baaqdff"]
+
+[ext_resource type="FontFile" uid="uid://dw5lhctu4s0w6" path="res://Fonts/Minecraft.ttf" id="1_rdjsh"]
+[ext_resource type="Script" path="res://damage_count_label.gd" id="1_tb15c"]
+
+[node name="DamageCountLabel" type="Label3D"]
+billboard = 1
+text = "Test"
+font = ExtResource("1_rdjsh")
+font_size = 40
+script = ExtResource("1_tb15c")
